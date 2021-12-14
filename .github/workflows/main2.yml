@@ -16,6 +16,7 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
     - run: |
+        az feature register --namespace Microsoft.Network --name AllowPrivateEndpointNSG –subscription 98360c1c-540f-4ad9-a44d-3c7e0c1c2ad6
         az group create --location eastus2 --name Azure1
         az network vnet create \
           --name MyVnet \
