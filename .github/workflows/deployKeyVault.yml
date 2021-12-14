@@ -1,0 +1,29 @@
+on: 
+  workflow_dispatch:
+  
+name: AzureLoginSample2
+
+jobs:
+
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+
+    - uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - run: |
+        az webapp list --query "[?state=='Running']"
+        az network vnet create \
+          --name MyVnet \
+          --resource-group Azure1 \
+          --location eastus2 \
+          --address-prefix 10.0.0.0/16 \
+          --subnet-name MySubnet-FrontEnd \
+          --subnet-prefix 10.0.1.0/24 
+        az keyvault create \
+          --name "mykeyvault" \
+          --resource-group "Azure1" \
+          --location "EastUS2"
+
