@@ -23,7 +23,7 @@ jobs:
           --subnet-name MySubnet-FrontEnd \
           --subnet-prefix 10.0.1.0/24 
         az keyvault create \
-          --name "mykeyvault_$((1 + $RANDOM % 100000))" \
+          --name "mykeyvault-$((1 + $RANDOM % 100000))" \
           --resource-group "Azure1" \
           --location "EastUS2"
 
