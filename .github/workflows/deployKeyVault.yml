@@ -25,5 +25,5 @@ jobs:
         az keyvault create \
           --name "mykeyvault-11248" \
           --resource-group "Azure1" \
-          --location "EastUS2"
+          --location "EastUS2" 
 
