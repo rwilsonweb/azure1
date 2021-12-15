@@ -14,7 +14,7 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
     - run: |
-        az webapp list --query "[?state=='Running']"
+        az group create -l eastus -n Azure1
         az network vnet create \
           --name MyVnet \
           --resource-group Azure1 \
@@ -23,7 +23,7 @@ jobs:
           --subnet-name MySubnet-FrontEnd \
           --subnet-prefix 10.0.1.0/24 
         az keyvault create \
-          --name "mykeyvault-11248" \
+          --name "mykeyvault" \
           --resource-group "Azure1" \
-          --location "EastUS2" 
+          --location "EastUS2"
 
